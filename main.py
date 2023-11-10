@@ -1,11 +1,12 @@
 import uvicorn
 from fastapi import FastAPI
+from schemas import WriteDataModel
 from redis import Redis
-from models import WriteDataModel
-
+from config import REDIS_PORT, REDIS_HOST
 
 app = FastAPI()
-redis = Redis(host='redis', port=6379)
+redis = Redis(host=REDIS_HOST,
+              port=REDIS_PORT)
 
 
 @app.get('/check_data')
